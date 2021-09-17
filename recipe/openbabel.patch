@@ -1,0 +1,212 @@
+From bf94d51aff6509f14b668bc370c28cf44c978da7 Mon Sep 17 00:00:00 2001
+From: Jan Janssen <jan.janssen@outlook.com>
+Date: Wed, 15 Sep 2021 18:21:08 -0600
+Subject: [PATCH] Openbable compatibility - latest version
+
+---
+ molSimplify/Classes/mGUI.py              | 2 +-
+ molSimplify/Classes/mol3D.py             | 2 +-
+ molSimplify/Scripts/addtodb.py           | 2 +-
+ molSimplify/Scripts/cellbuilder_tools.py | 2 +-
+ molSimplify/Scripts/dbinteract.py        | 2 +-
+ molSimplify/Scripts/distgeom.py          | 2 +-
+ molSimplify/Scripts/io.py                | 2 +-
+ molSimplify/Scripts/molSimplify_io.py    | 2 +-
+ molSimplify/Scripts/structgen.py         | 8 ++++----
+ molSimplify/__main__.py                  | 2 +-
+ tests/helperFuncs.py                     | 2 +-
+ tests/helperFuncs.py.bak                 | 2 +-
+ tests/runtest.py                         | 2 +-
+ 13 files changed, 16 insertions(+), 16 deletions(-)
+
+diff --git a/molSimplify/Classes/mGUI.py b/molSimplify/Classes/mGUI.py
+index 1e96c6aa..53110b0a 100644
+--- a/molSimplify/Classes/mGUI.py
++++ b/molSimplify/Classes/mGUI.py
+@@ -29,7 +29,7 @@
+ from pkg_resources import resource_filename, Requirement
+ import xml.etree.ElementTree as ET
+ 
+-import openbabel
++from openbabel import openbabel
+ 
+ # Main GUI class
+ 
+diff --git a/molSimplify/Classes/mol3D.py b/molSimplify/Classes/mol3D.py
+index 5a084030..d70ae223 100644
+--- a/molSimplify/Classes/mol3D.py
++++ b/molSimplify/Classes/mol3D.py
+@@ -14,7 +14,7 @@
+ import xml.etree.ElementTree as ET
+ from math import sqrt
+ import numpy as np
+-import openbabel
++from openbabel import openbabel
+ from scipy.spatial import ConvexHull
+ 
+ from molSimplify.Classes.atom3D import atom3D
+diff --git a/molSimplify/Scripts/addtodb.py b/molSimplify/Scripts/addtodb.py
+index 042c53c5..07a470a2 100644
+--- a/molSimplify/Scripts/addtodb.py
++++ b/molSimplify/Scripts/addtodb.py
+@@ -17,7 +17,7 @@
+ import subprocess
+ import re
+ import unicodedata
+-import openbabel
++from openbabel import openbabel
+ import random
+ import shutil
+ from pkg_resources import resource_filename, Requirement
+diff --git a/molSimplify/Scripts/cellbuilder_tools.py b/molSimplify/Scripts/cellbuilder_tools.py
+index acf93fcd..2c9672ee 100644
+--- a/molSimplify/Scripts/cellbuilder_tools.py
++++ b/molSimplify/Scripts/cellbuilder_tools.py
+@@ -8,7 +8,7 @@
+ import re
+ 
+ import numpy
+-import openbabel
++from openbabel import openbabel
+ import copy
+ from math import sqrt, pi
+ from molSimplify.Classes.globalvars import globalvars
+diff --git a/molSimplify/Scripts/dbinteract.py b/molSimplify/Scripts/dbinteract.py
+index b0cf4204..dc5cce78 100644
+--- a/molSimplify/Scripts/dbinteract.py
++++ b/molSimplify/Scripts/dbinteract.py
+@@ -14,7 +14,7 @@
+     import pymol
+ except:
+     pass
+-import openbabel
++from openbabel import openbabel
+ 
+ from molSimplify.Classes.globalvars import (amassdict,
+                                             glob,
+diff --git a/molSimplify/Scripts/distgeom.py b/molSimplify/Scripts/distgeom.py
+index 78c56c5d..a4176886 100644
+--- a/molSimplify/Scripts/distgeom.py
++++ b/molSimplify/Scripts/distgeom.py
+@@ -14,7 +14,7 @@
+ 
+ import numpy as np
+ import numpy
+-import openbabel
++from openbabel import openbabel
+ from scipy import optimize
+ from math import sqrt, cos
+ 
+diff --git a/molSimplify/Scripts/io.py b/molSimplify/Scripts/io.py
+index 53674328..5a214c91 100644
+--- a/molSimplify/Scripts/io.py
++++ b/molSimplify/Scripts/io.py
+@@ -12,7 +12,7 @@
+ import argparse
+ import sys
+ import random
+-import openbabel
++from openbabel import openbabel
+ import copy
+ from molSimplify.Classes.mol3D import *
+ from molSimplify.Classes.globalvars import *
+diff --git a/molSimplify/Scripts/molSimplify_io.py b/molSimplify/Scripts/molSimplify_io.py
+index 4798066d..d102d467 100644
+--- a/molSimplify/Scripts/molSimplify_io.py
++++ b/molSimplify/Scripts/molSimplify_io.py
+@@ -13,7 +13,7 @@
+ import os
+ import time
+ 
+-import openbabel
++from openbabel import openbabel
+ from pkg_resources import resource_filename, Requirement
+ 
+ from molSimplify.Classes.globalvars import (globalvars,
+diff --git a/molSimplify/Scripts/structgen.py b/molSimplify/Scripts/structgen.py
+index c14d55b0..4b375d99 100644
+--- a/molSimplify/Scripts/structgen.py
++++ b/molSimplify/Scripts/structgen.py
+@@ -56,7 +56,7 @@
+ from molSimplify.Informatics.RACassemble import (assemble_connectivity_from_parts)
+ from molSimplify.Classes.ligand import ligand
+ from molSimplify.Classes.globalvars import globalvars
+-import openbabel
++from openbabel import openbabel
+ import random
+ import itertools
+ import numpy
+@@ -680,10 +680,10 @@ def ffopt(ff, mol, connected, constopt, frozenats, frozenangles, mlbonds, nsteps
+                         deleted_bonds += 1
+                 print(('FFopt deleted ' + str(deleted_bonds) + ' bonds'))
+                 # then add back one metal-ligand bond for FF
+-                if OBMol.GetAtom(m+1).GetValence() == 0:
++                if OBMol.GetAtom(m+1).GetExplicitDegree() == 0:
+                     # getBondedAtomsOct(m,deleted_bonds+len(bridgingatoms)):
+                     for i in mol.getBondedAtoms(m):
+-                        if OBMol.GetAtom(m+1).GetValence() < 1 and i not in bridgingatoms:
++                        if OBMol.GetAtom(m+1).GetExplicitDegree() < 1 and i not in bridgingatoms:
+                             OBMol.AddBond(m+1, i+1, 1)
+         # freeze small ligands
+         for cat in frozenats:
+@@ -693,7 +693,7 @@ def ffopt(ff, mol, connected, constopt, frozenats, frozenangles, mlbonds, nsteps
+         if debug:
+             for iiat, atom in enumerate(openbabel.OBMolAtomIter(OBMol)):
+                 print((' atom '+str(iiat)+' atomic num '+str(atom.GetAtomicNum())+' valence ' +
+-                       str(atom.GetValence()) + ' is fixed ' + str(constr.IsFixed(iiat+1))))
++                       str(atom.GetExplicitDegree()) + ' is fixed ' + str(constr.IsFixed(iiat+1))))
+         # set up forcefield
+         s = forcefield.Setup(OBMol, constr)
+         if s == False:
+diff --git a/molSimplify/__main__.py b/molSimplify/__main__.py
+index b773c26b..b26c1070 100644
+--- a/molSimplify/__main__.py
++++ b/molSimplify/__main__.py
+@@ -27,7 +27,7 @@
+ import sys, argparse, os, platform, shutil
+ if not('win' in sys.platform):
+     flags = sys.getdlopenflags()
+-import openbabel
++from openbabel import openbabel
+ if not('win' in sys.platform):
+     sys.setdlopenflags(flags)
+ 
+diff --git a/tests/helperFuncs.py b/tests/helperFuncs.py
+index 8e071de5..646b9dc9 100644
+--- a/tests/helperFuncs.py
++++ b/tests/helperFuncs.py
+@@ -2,7 +2,7 @@
+ import argparse
+ import json
+ import os
+-import openbabel as ob
++from openbabel import openbabel as ob
+ import numpy as np
+ from molSimplify.Scripts.inparse import *
+ from molSimplify.Scripts.geometry import *
+diff --git a/tests/helperFuncs.py.bak b/tests/helperFuncs.py.bak
+index f446cbe9..3b7bfc6d 100644
+--- a/tests/helperFuncs.py.bak
++++ b/tests/helperFuncs.py.bak
+@@ -2,7 +2,7 @@ import pytest
+ import argparse
+ import json
+ import os
+-import openbabel as ob
++from openbabel import openbabel as ob
+ import numpy as np
+ from molSimplify.Scripts.inparse import *
+ from molSimplify.Scripts.geometry import *
+diff --git a/tests/runtest.py b/tests/runtest.py
+index aa90c3a3..bbbea019 100644
+--- a/tests/runtest.py
++++ b/tests/runtest.py
+@@ -1,7 +1,7 @@
+ import pytest
+ import argparse
+ import os
+-import openbabel as ob
++from openbabel import openbabel as ob
+ import numpy as np
+ from molSimplify.Scripts.inparse import *
+ from molSimplify.Scripts.generator import *
