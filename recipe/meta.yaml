@@ -1,12 +1,12 @@
 {% set name = "molsimplify" %}
-{% set version = "1.1.4.8" %}
+{% set version = "1.5.0.0" %}
 
 package:
   name: {{ name|lower }}
   version: {{ version }}
 
 source:
-  url: https://github.com/hjkgrp/molSimplify/archive/refs/tags/v{{ version }}-alpha.tar.gz
+  url: https://github.com/hjkgrp/molSimplify/archive/refs/heads/master.zip
   sha256: 1ead83f5dfb51d5bb33ab8dde7b3e53575878745e6c31dfab046f33ce0bc9188
 
 build:
