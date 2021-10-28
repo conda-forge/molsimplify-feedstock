@@ -8,8 +8,6 @@ package:
 source:
   url: https://github.com/hjkgrp/molSimplify/archive/refs/heads/master.tar.gz
   sha256: 32cda63db1d032bdc7c18a3adb6f791ee87a55e92641b6157f357179889b4298
-  patches:
-    - openbabel.patch
 
 build:
   number: 0
