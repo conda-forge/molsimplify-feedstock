@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://github.com/hjkgrp/molSimplify/archive/refs/tags/v{{ version }}.tar.gz
-  sha256: 580aecfc2bb2ff8e14fce724c411d9a78e06b0083653b1946803016096c60973
+  sha256: fcd91dd46bfc43d91a6a4bf6fed17ca99d5260be771e95abed81c69e5a48c5e6
 
 build:
   number: 1
