@@ -30,6 +30,7 @@ requirements:
     - pyyaml
     - tensorflow
     - hyperopt
+    - pre-commit
 
 test:
   imports:
