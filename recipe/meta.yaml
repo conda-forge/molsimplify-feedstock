@@ -1,5 +1,5 @@
 {% set name = "molsimplify" %}
-{% set version = "1.7.1" %}
+{% set version = "1.7.2" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://github.com/hjkgrp/molSimplify/archive/refs/tags/v{{ version }}.tar.gz
-  sha256: c2a0efdce9fbbaae47bbbf2d46c35adcbb0de99b6ebafdb67f0e96df29d1b631
+  sha256: 8d8145e75c57ff5020dfd6b268e02c056d870235a3399f714797326f50ef2b1c
 
 build:
   number: 0
