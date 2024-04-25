@@ -4,19 +4,18 @@ Date: Wed, 24 Apr 2024 19:01:06 -0500
 Subject: [PATCH] Update pyproject.toml
 
 ---
- pyproject.toml | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ pyproject.toml | 1 -
+ 1 file changed, 1 deletion(-)
 
 diff --git a/pyproject.toml b/pyproject.toml
 index f5cad29b..1d5be956 100644
 --- a/pyproject.toml
 +++ b/pyproject.toml
-@@ -4,7 +4,7 @@ version = "v1.7.4"
+@@ -4,7 +4,6 @@ version = "v1.7.4"
  license = {file = "LICENSE"}
  readme = "README.md"
  dependencies = [
 -    "openbabel-wheel",
-+    "openbabel",
      "numpy",
      "scipy",
      "pandas",
