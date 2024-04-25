@@ -8,6 +8,8 @@ package:
 source:
   url: https://github.com/hjkgrp/molSimplify/archive/refs/tags/v{{ version }}.tar.gz
   sha256: c70292255c4898e1c84d4abefe42568bb09a4094df40b4b307b4f24b15aa679a
+  patches:
+    - pyproject.patch
 
 build:
   number: 0
