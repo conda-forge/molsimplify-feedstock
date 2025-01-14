@@ -1,5 +1,5 @@
 {% set name = "molsimplify" %}
-{% set version = "1.7.5" %}
+{% set version = "1.7.6" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://github.com/hjkgrp/molSimplify/archive/refs/tags/v{{ version }}.tar.gz
-  sha256: eeabb7a13087c09ae5c5b5d258dea79fc8a2995f4a12e69a957a79ee0ceedb08
+  sha256: 767d5cbf646e87ea780c6b709c3805a9b41d56e92c7dbeb499a10efc1f226c00
   patches:
     - pyproject.patch
 
