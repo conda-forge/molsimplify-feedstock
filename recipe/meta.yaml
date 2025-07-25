@@ -21,6 +21,7 @@ requirements:
     - python
     - pip
     - pytest-runner
+    - setuptools
   run:
     - python
     - openbabel
