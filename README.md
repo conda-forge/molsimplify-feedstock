@@ -3,7 +3,7 @@ About molsimplify-feedstock
 
 Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/molsimplify-feedstock/blob/main/LICENSE.txt)
 
-Home: https://molsimplify.mit.edu
+Home: https://molsimplify.mit.edu/
 
 Package license: GPL-3.0-or-later
 
@@ -16,7 +16,6 @@ Documentation: https://molsimplify.readthedocs.io/
 molSimplify is an open source toolkit for the automated,
 first-principles screening and discovery of new inorganic molecules
 and intermolecular complexes.
-
 
 Current build status
 ====================
