@@ -38,6 +38,8 @@ requirements:
     - hyperopt
     - pre-commit
     - importlib-resources
+    - pydentate
+    - matplotlib-base
 
 tests:
   - python:
