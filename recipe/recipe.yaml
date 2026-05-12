@@ -2,7 +2,7 @@ schema_version: 1
 
 context:
   name: molsimplify
-  version: 1.8.0
+  version: "2.0.0"
 
 package:
   name: ${{ name|lower }}
@@ -10,12 +10,12 @@ package:
 
 source:
   url: https://github.com/hjkgrp/molSimplify/archive/refs/tags/v${{ version }}.tar.gz
-  sha256: 8d80ba0b01bf7beb57a242616e6fba2607444f201743d735e3e14ca8191168ec
+  sha256: b8d0a58b87c9650a1d3b620421a5360d27ddd6dcef7a974aa71bfdf628e5f8c2
   patches:
     - pyproject.patch
 
 build:
-  number: 1
+  number: 0
   skip: win
   script: ${{ PYTHON }} -m pip install . -vv
 
